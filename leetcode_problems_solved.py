@@ -25,16 +25,16 @@ def reverse_integer(self, x):
 
 # Problem 4: Median of Two Sorted Arrays, difficult: Hard
 
-class Solution:
+class Solution(object):
     def findMedianSortedArrays(self, nums1, nums2):
-        import numpy as np
         """
         :type nums1: List[int]
         :type nums2: List[int]
         :rtype: float
         """
-        both = np.array(nums1)
-        both = np.append(both, nums2)
-        both = np.sort(both)
-        return float(np.median(both))
-        
+        both = nums1+nums2
+        both.sort()
+        if len(both)%2 == 1:
+            return both[len(both)/2]
+
+        return (both[len(both)/2 - 1] + both[len(both)/2])/2.0
